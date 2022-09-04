@@ -1,11 +1,17 @@
 #include<iostream>
 #include<string>
+#include<numeric>
 using namespace std;
 
-bool check(string tmp, string str1, string str2) {
-	for (int i = 0; i < tmp.length() && tmp.length(); i++) {
+int findcnt(string str, string word) {
+	int cnt = 0;
 
+	for (int i = 0; i < str.length(); i += word.length()) {
+		if (str.find(word) == -1) break;
+		else if (str.find(word, i) <= i) cnt++;
 	}
+
+	return cnt;
 }
 
 int main() {
@@ -24,16 +30,12 @@ int main() {
 		for (int j = 0; j < str1[i].length() && j < str2[i].length(); j++) {
 			if (str1[i][j] == str2[i][j]) {
 				tmp += str1[i][j];
-				if ()
-			}
-			else break;
-		}
-		if (tmp.length() > ans[i].length()) {
-			if (str1[i].length() % tmp.length() == 0) {
-				for (int k = 0; k < str1[i].length() / tmp.length(); k++) {
-
+				if (str1[i].length() % tmp.length() == 0 && str2[i].length() % tmp.length() == 0 && tmp.length() > ans[i].length()) {
+					if ((str1[i].length() / tmp.length() == findcnt(str1[i], tmp)) && (str2[i].length() / tmp.length() == findcnt(str2[i], tmp)))
+						ans[i] = tmp;
 				}
 			}
+			else break;
 		}
 	}
 
