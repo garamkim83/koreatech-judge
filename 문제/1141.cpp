@@ -1,6 +1,5 @@
 #include<iostream>
 #include<string>
-#include<numeric>
 using namespace std;
 
 int findcnt(string str, string word) {
